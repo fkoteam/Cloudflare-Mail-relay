@@ -87,7 +87,7 @@ On “Workers & Pages” / “Overview” / “manageAlias” / “Settings” /
 
 Now we have to create a second worker, which is the one that will forward to our email. We will enter the Cloudflare console of our domain, “Email” / “Email routing”. The first time we enter, it will offer us a DNS configuration, which we will accept and we will have to verify our destination email. In “Email” / “Email routing” / “Email workers” we create a worker with the following code, note that it must be adapted to your email and your domain:
 
-
+``
 export default {
   async email(message, env, ctx) {
     const regex = /^[^@]+xxx@MYDOMAIN\.xyz$/; // Replace with the domain
@@ -109,7 +109,7 @@ export default {
     await message.forward("MY-MAIL@gmail.com"); // Replace with your email
   }
 }
-
+``
 
 
 
