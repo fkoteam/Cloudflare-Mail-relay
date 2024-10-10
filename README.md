@@ -314,7 +314,3 @@ Con esto ya lo deberíamos tener funcionando.
 
 
 
-
-6
-
-
