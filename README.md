@@ -6,13 +6,13 @@ The goal is to create a system with similar functionality to Firefox Relay or ad
 1.- Domain
 
 You need your own domain. If you already have one, you can go to point 2.
-If you don't have one, the cheapest solution is gen.xyz (affiliate link https://gen.xyz/a/102458 ), with a xyz domain of between 6 and 9 digits (numbers). It allows you to register your domain for up to 10 years for less than 10 euros (less than 1 euro per year)1.
+If you don't have one, the cheapest solution is gen.xyz (affiliate link https://gen.xyz/a/102458 ), with a xyz domain of between 6 and 9 digits (numbers). It allows you to register your domain for up to 10 years for less than 10 euros (less than 1 euro per year)<sup>1</sup>.
 
 2.- Cloudflare
 
 If your domain is already managed by Cloudflare, you can go to point 3.
-If not, we register with Cloudflare and add our domain. We use the free plan. Cloudflare will provide us with some Nameservers2. We will have to change them on the gen.xyz administration page3.
-Once this is done, Cloudflare should now recognise the domain as active4.
+If not, we register with Cloudflare and add our domain. We use the free plan. Cloudflare will provide us with some Nameservers<sup>2</sup>. We will have to change them on the gen.xyz administration page<sup>3</sup>.
+Once this is done, Cloudflare should now recognise the domain as active<sup>4</sup>.
 
 3.- Creating the mail alias system
 
@@ -20,6 +20,7 @@ We will need a database to manage the aliases. This will allow us to delete an a
 
 First we will create the worker that will allow us to add and remove from the list of deleted aliases. Go to “Workers & Pages” / “Overview” / “Create” and create the “managealias” worker with the following code:
 
+```
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -79,15 +80,16 @@ export default {
   }
 }
 
+```
 
 
 
-
-On “Workers & Pages” / “Overview” / “manageAlias” / “Settings” / “Bindings” / “Add” / “KV namespace” and select the namespace “suppressedAliases” and give it the same name “suppressedAliases”5. With this, we can go to the URL of our worker and add and remove aliases from the list.
+On “Workers & Pages” / “Overview” / “manageAlias” / “Settings” / “Bindings” / “Add” / “KV namespace” and select the namespace “suppressedAliases” and give it the same name “suppressedAliases”<sup>5</sup>. With this, we can go to the URL of our worker and add and remove aliases from the list.
 
 Now we have to create a second worker, which is the one that will forward to our email. We will enter the Cloudflare console of our domain, “Email” / “Email routing”. The first time we enter, it will offer us a DNS configuration, which we will accept and we will have to verify our destination email. In “Email” / “Email routing” / “Email workers” we create a worker with the following code, note that it must be adapted to your email and your domain:
 
-``
+
+```
 export default {
   async email(message, env, ctx) {
     const regex = /^[^@]+xxx@MYDOMAIN\.xyz$/; // Replace with the domain
@@ -109,7 +111,7 @@ export default {
     await message.forward("MY-MAIL@gmail.com"); // Replace with your email
   }
 }
-``
+```
 
 
 
@@ -118,7 +120,7 @@ This code will forward any email from an alias of our domain (that is not on the
 
 We also have to do the bind with the KV namespace. We will have to repeat the steps as we did in the first worker and we will assign the same namespace with the same name.
 
-We are almost done. In cloudflare, we have to enter our domain, “Email” / “Email routing” / “Routing rules” and configure so that all received emails go through worker6.
+We are almost done. In cloudflare, we have to enter our domain, “Email” / “Email routing” / “Routing rules” and configure so that all received emails go through worker<sup>6</sup>.
 
 With this we should have it working.
 
