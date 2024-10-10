@@ -268,24 +268,50 @@ Con esto ya lo deberíamos tener funcionando.
 
 
 
-1
+
+
+**1**
+
+
 ![imatge](https://github.com/user-attachments/assets/c808d92a-aeed-414f-acf4-62ddf1b6c471)
 
 
-2
+
+
+**2**
+
+
 ![imatge](https://github.com/user-attachments/assets/1b300bda-a264-4755-8830-3086dc656389)
 
-3
+
+
+**3**
+
+
 ![imatge](https://github.com/user-attachments/assets/abc844dc-3a7a-47e8-84ae-87897f78d1b8)
 
-4
+
+
+**4**
+
+
 ![imatge](https://github.com/user-attachments/assets/f2e0117d-3198-49e2-a1c2-5c96c88290d7)
 
-5
+
+
+**5**
+
+
 ![imatge](https://github.com/user-attachments/assets/210a1cd7-0188-4587-9bf7-8aed8676246d)
 
-6
+
+
+**6**
+
+
 ![imatge](https://github.com/user-attachments/assets/b7a5dea1-9e96-4f2a-bebd-c2fbd2190c9b)
+
+
 
 
 
